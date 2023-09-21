@@ -1,5 +1,10 @@
-str = "DHKJB f hjbJbdfh bdubdf vfdw' vbdfpf vrgt785ui4gyoe fdhkjh sb4 gkiow4 rekwl"
-upper = str.count('D')
-lower = str.count('d')
-print(f"Uppercase 'D' count: {upper}")
-print(f"Lowercase 'd' count: {lower}")
+# Введення коефіцієнтів a, b і c
+a = float(input("Введіть коефіцієнт a: "))
+b = float(input("Введіть коефіцієнт b: "))
+c = float(input("Введіть коефіцієнт c: "))
+
+# Обчислення дискримінанту
+D = b**2 - 4*a*c
+
+# Виведення результату
+print(f"Дискримінант D = {D}")
