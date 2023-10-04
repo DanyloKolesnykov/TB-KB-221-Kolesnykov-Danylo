@@ -1,17 +1,22 @@
-num_1 = float(input("Введіть перше число: "))
-num_2 = float(input("Введіть друге  число: "))
-action = input("Яку дію ви хочете зробити?: ")
-if action == "+":
-    result = num_1 + num_2
-    print(result)
+# Введення чисел та операції від користувача
+num1 = float(input("Введіть перше число: "))
+operator = input("Введіть операцію (+, -, *, /): ")
+num2 = float(input("Введіть друге число: "))
 
-elif action == "-":
-    result = num_1  - num_2
-    print(result)
-
-elif action == "*":
-    result = num_1 * num_2
-    print(result)
+# Виконання обчислень на основі введеної операції
+if operator == "+":
+    result = num1 + num2
+elif operator == "-":
+    result = num1 - num2
+elif operator == "*":
+    result = num1 * num2
+elif operator == "/":
+    if num2 == 0:
+        print("Помилка: Ділення на нуль неможливе")
+    else:
+        result = num1 / num2
 else:
-    result = num_1 / num_2
-    print(result)
+    print("Помилка: Невідома операція")
+
+print(f"Результат: {result}")
+
