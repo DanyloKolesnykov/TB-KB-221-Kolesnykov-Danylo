@@ -1,35 +1,49 @@
 import math
 
-operation = input("Enter the operation to perform: (+ - * / ^ sqrt %) ")
+def add(x, y):
+    return x + y
 
-number1 = float(input("Enter the first number: "))
+def subtract(x, y):
+    return x - y
 
-if operation not in ['sqrt']:
-    number2 = float(input("Enter the second number: "))
+def multiply(x, y):
+    return x * y
 
-result = None
+def divide(x, y):
+    if y == 0:
+        return "Ділення на нуль неможливе"
+    return x / y
 
-if operation == '+':
-    result = number1 + number2
-elif operation == '-':
-    result = number1 - number2
-elif operation == '*':
-    result = number1 * number2
-elif operation == '/':
-    if number2 == 0:
-        result = "Error: division by zero"
-    else:
-        result = number1 / number2
-elif operation == '^':
-    result = math.pow(number1, number2)
-elif operation == 'sqrt':
-    if number1 < 0:
-        result = "Error: cannot compute square root of a negative number"
-    else:
-        result = math.sqrt(number1)
-elif operation == '%':
-    result = number1 % number2
-else:
-    result = "Invalid operation choice"
+while True:
+    print("Виберіть операцію:")
+    print("1. Додавання")
+    print("2. Віднімання")
+    print("3. Множення")
+    print("4. Ділення")
+    print("5. Вихід")
 
-print(f"Result: {result}")
+    choice = input("Введіть номер операції (1/2/3/4/5): ")
+    
+    match choice:
+        case '1':
+            num1 = float(input("Введіть перше число: "))
+            num2 = float(input("Введіть друге число: "))
+            print("Результат:", add(num1, num2))
+        case '2':
+            num1 = float(input("Введіть перше число: "))
+            num2 = float(input("Введіть друге число: "))
+            print("Результат:", subtract(num1, num2))
+        case '3':
+            num1 = float(input("Введіть перше число: "))
+            num2 = float(input("Введіть друге число: "))
+            print("Результат:", multiply(num1, num2))
+        case '4':
+            num1 = float(input("Введіть перше число: "))
+            num2 = float(input("Введіть друге число: "))
+            result = divide(num1, num2)
+            print("Результат:", result)
+        case '5':
+            print("Бувай!")
+            break
+        case _:
+            print("Невірний вибір. Будь ласка спробуйте ще раз.")
