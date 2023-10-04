@@ -11,7 +11,7 @@ length_str2 = len(str2)
 print("Довжина першого рядка:", length_str1)
 print("Довжина другого рядка:", length_str2)
 
-# Вирізка підрядка
+# Вирізка підрядка  
 substring_str1 = str1[2:7]
 substring_str2 = str2[6:11]
 print("Вирізка підрядка з першого рядка:", substring_str1)
