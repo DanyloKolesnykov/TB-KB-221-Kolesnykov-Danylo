@@ -1,53 +1,47 @@
-str1 = "apple12331231"
-str2 = "banana!$@$%hhdfgh"
+# Test functions for string manipulation
 
-# Додавання рядків і виведення результату
-result = str1 + " " + str2
-print("Додавання рядків:", result)
+# Function to test strip()
+def test_strip():
+    original_string = "   Hello, World!   "
+    stripped_string = original_string.strip()
+    print("Original String:", original_string)
+    print("Stripped String:", stripped_string)
 
-# Довжина рядків
-length_str1 = len(str1)
-length_str2 = len(str2)
-print("Довжина першого рядка:", length_str1)
-print("Довжина другого рядка:", length_str2)
+# Function to test capitalize()
+def test_capitalize():
+    original_string = "hello, world!"
+    capitalized_string = original_string.capitalize()
+    print("Original String:", original_string)
+    print("Capitalized String:", capitalized_string)
 
-# Вирізка підрядка  
-substring_str1 = str1[2:7]
-substring_str2 = str2[6:11]
-print("Вирізка підрядка з першого рядка:", substring_str1)
-print("Вирізка підрядка з другого рядка:", substring_str2)
+# Function to test title()
+def test_title():
+    original_string = "this is a title case example"
+    title_case_string = original_string.title()
+    print("Original String:", original_string)
+    print("Title Case String:", title_case_string)
 
-# Пошук підрядка
-search_string = "banana"
-if search_string in str2:
-    print(f"Рядок '{search_string}' знайдений в другому рядку.")
-else:
-    print(f"Рядок '{search_string}' не знайдений в другому рядку.")
+# Function to test upper()
+def test_upper():
+    original_string = "convert me to uppercase"
+    uppercase_string = original_string.upper()
+    print("Original String:", original_string)
+    print("Uppercase String:", uppercase_string)
 
-# Верхній та нижній регістр
-uppercase_str1 = str1.upper()
-lowercase_str2 = str2.lower()
-print("Перший рядок у верхньому регістрі:", uppercase_str1)
-print("Другий рядок у нижньому регістрі:", lowercase_str2)
+# Function to test lower()
+def test_lower():
+    original_string = "CONVERT ME TO LOWERCASE"
+    lowercase_string = original_string.lower()
+    print("Original String:", original_string)
+    print("Lowercase String:", lowercase_string)
 
-# Заміна підрядка
-replaced_str2 = str2.replace("banana", "orange")
-print("Заміна підрядка у другому рядку:", replaced_str2)
-
-# Розділення рядка на список
-words_str2 = str2.split("!")
-print("Розділення другого рядка на список за символом '!':", words_str2)
-
-# Об'єднання списку в рядок
-joined_string = " ".join(words_str2)
-print("Об'єднання списку в рядок:", joined_string)
-
-# Перевірка, чи є рядок числовим
-numeric_str1 = "12345"
-is_numeric = numeric_str1.isnumeric()
-print(f"Чи є рядок '{numeric_str1}' числовим: {is_numeric}")
-
-# Видалення пробілів з другого рядка
-whitespace_str2 = "  Пробіли  "
-stripped_str2 = whitespace_str2.strip()
-print("Видалення пробілів з другого рядка:", stripped_str2)
+# Run the test functions
+test_strip()
+print("\n")
+test_capitalize()
+print("\n")
+test_title()
+print("\n")
+test_upper()
+print("\n")
+test_lower()
