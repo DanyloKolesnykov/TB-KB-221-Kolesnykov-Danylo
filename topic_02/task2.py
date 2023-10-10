@@ -1,22 +1,32 @@
-# Введення чисел та операції від користувача
-num1 = float(input("Введіть перше число: "))
-operator = input("Введіть операцію (+, -, *, /): ")
-num2 = float(input("Введіть друге число: "))
+def addition(a, b):
+    return a + b
 
-# Виконання обчислень на основі введеної операції
-if operator == "+":
-    result = num1 + num2
-elif operator == "-":
-    result = num1 - num2
-elif operator == "*":
-    result = num1 * num2
-elif operator == "/":
-    if num2 == 0:
-        print("Помилка: Ділення на нуль неможливе")
+def subtraction(a, b):
+    return a - b
+
+def multiplication(a, b):
+    return a * b
+
+def division(a, b):
+    if b != 0:
+        return a / b
     else:
-        result = num1 / num2
+        return "Помилка: ділення на нуль"
+
+choice = input("Введіть яку операцію ви хочете зробити?: ")
+
+number1 = float(input("Введіть перше число: "))
+number2 = float(input("Введіть друге число: "))
+
+if choice == "+":
+    result = addition(number1, number2)
+elif choice == "-":
+    result = subtraction(number1, number2)
+elif choice == "*":
+    result = multiplication(number1, number2)
+elif choice == "/":
+    result = division(number1, number2)
 else:
-    print("Помилка: Невідома операція")
+    result = "Невірний вибір операції"
 
-print(f"Результат: {result}")
-
+print("Результат: ", result)
