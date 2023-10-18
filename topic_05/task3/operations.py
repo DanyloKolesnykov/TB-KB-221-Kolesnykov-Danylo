@@ -11,8 +11,13 @@ def get_user_input():
     return x, y
 
 def get_operation():
-    operation = input("Виберіть операцію (+, -, *, /): ")
-    return operation
+    while True:
+        operation = input("Виберіть операцію (+, -, *, /): ")
+        if operation in ('+', '-', '*', '/'):
+            return operation
+        else:
+            print("Неправильний вибір операції. Будь ласка, виберіть одну з операцій (+, -, *, /).")
+
 
 if __name__ == "__main__":
     x, y = get_user_input()
