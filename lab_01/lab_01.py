@@ -2,7 +2,7 @@ list = [
     {"name": "Bob", "phone": "0631234567", "email": "bob@example.com", "age": 25},
     {"name": "Emma", "phone": "0631234567", "email": "emma@example.com", "age": 22},
     {"name": "Jon", "phone": "0631234567", "email": "jon@example.com", "age": 28},
-    {"name": "Zak", "phone": "0631234567", "email": "zak@example.com", "age": 24}
+    {"name": "Tom", "phone": "0631234567", "email": "zak@example.com", "age": 24}
 ]
 
 def printAllList():
