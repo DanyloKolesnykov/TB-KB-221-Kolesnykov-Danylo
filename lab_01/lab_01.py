@@ -58,14 +58,16 @@ def updateElement():
             new_phone = input("Enter a new phone: ")
             new_email = input("Enter a new email: ")
 
-            # Додайте ключ "surname", якщо його немає
-            if "surname" not in list[i]:
-                list[i]["surname"] = ""
-
             list[i]["name"] = new_name
             list[i]["surname"] = new_surname
             list[i]["phone"] = new_phone
             list[i]["email"] = new_email
+            n = len(list)
+            for i in range(n - 1):
+                for j in range(0, n - i - 1):
+                    if list[j]['name'] > list[j + 1]["name"]:
+                        list[j], list[j + 1] = list[j + 1], list[j]
+                        
 
 
 
