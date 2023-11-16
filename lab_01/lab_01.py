@@ -1,63 +1,78 @@
+
+## List [Item1, Item2, Item3]
+## Item {"name":"Jon", "phone":"0631234567"}
+
+# already sorted list
 list = [
-    {"name": "Bob", "phone": "0631234567", "email": "bob@example.com", "age": 25},
-    {"name": "Emma", "phone": "0631234567", "email": "emma@example.com", "age": 22},
-    {"name": "Jon", "phone": "0631234567", "email": "jon@example.com", "age": 28},
-    {"name": "Tom", "phone": "0631234567", "email": "zak@example.com", "age": 24}
+    {"name":"Bob", "surname": "Mirales", "phone":"0631234567", "email": "bob123@gmail.com" },
+    {"name":"Emma", "surname": "Tompson","phone":"0631234567", "email": "emmatompson@gmail.com"},
+    {"name":"Jon",  "surname": "Tas","phone":"0631234567", "email": "jonsons@gmail.com"},
+    {"name":"Zak",  "surname": "Mykolenko","phone":"0631234A567", "email": "mykolenko@gmail.com"}
 ]
 
 def printAllList():
     for elem in list:
-        strForPrint = (
-            f"Student name is {elem['name']}, Phone is {elem['phone']}, "
-            f"Email is {elem['email']}, Age is {elem['age']}"
-        )
+        strForPrint = "Student name is " + elem["name"] + ", Surname is "+elem["surname"] + ",  Phone is " + elem["phone"] + ", " + ", email is " +elem["email"]
         print(strForPrint)
     return
 
 def addNewElement():
-    name = input("Please enter student name: ")
-    phone = input("Please enter student phone: ")
+    name = input("Pease enter student name: ")
+    surname = input("Please enter student surname: ")
+    phone = input("Please enter student phone: ")   
     email = input("Please enter student email: ")
-    age = int(input("Please enter student age: "))
-    newItem = {"name": name, "phone": phone, "email": email, "age": age}
-    list.append(newItem)
-    list.sort(key=lambda x: x["name"])  
+    newItem = {"name": name,"surname": surname, "phone": phone, "email": email}
+    # find insert position
+    insertPosition = 0
+    for item in list:
+        if name > item["name"]:
+            insertPosition += 1
+        else:
+            break
+    list.insert(insertPosition, newItem)
     print("New element has been added")
     return
 
 def deleteElement():
-    name = input("Please enter name to be deleted: ")
+    name = input("Please enter name to be delated: ")
+    deletePosition = -1
     for item in list:
         if name == item["name"]:
-            list.remove(item)
-            list.sort(key=lambda x: x["name"])  
-            print("Element has been deleted")
-            return
-    print("Element not found")
+            deletePosition = list.index(item)
+            break
+    if deletePosition == -1:
+        print("Element was not found")
+    else:
+        print("Dele position " + str(deletePosition))
+        # list.pop(deletePosition)
+        del list[deletePosition]
+    return
+
 
 def updateElement():
     name = input("Please enter name to be updated: ")
     for i, item in enumerate(list):
         if name == item["name"]:
-            new_name = input("Enter new name: ")
-            new_phone = input("Enter new phone: ")
-            new_email = input("Enter new email: ")
-            new_age = int(input("Enter new age: "))
+            new_name = input("Enter a new name: ")
+            new_surname = input("Enter a new surname: ")
+            new_phone = input("Enter a new phone: ")
+            new_email = input("Enter a new email: ")
+
+            # Додайте ключ "surname", якщо його немає
+            if "surname" not in list[i]:
+                list[i]["surname"] = ""
 
             list[i]["name"] = new_name
+            list[i]["surname"] = new_surname
             list[i]["phone"] = new_phone
             list[i]["email"] = new_email
-            list[i]["age"] = new_age
 
-            list.sort(key=lambda x: x["name"])  
-            print("Element has been updated")
-            return
-    print("Element not found")
+
 
 def main():
     while True:
-        choice = input("Please specify the action [C create, U update, D delete, P print, X exit] ")
-        match choice.lower():
+        choice = input("Please specify the action [C create, U update, D delete, P print, X exit] ").lower()
+        match choice:
             case "c":
                 print("New element will be created:")
                 addNewElement()
@@ -80,3 +95,6 @@ def main():
                 print("Wrong choice")
 
 main()
+
+
+
