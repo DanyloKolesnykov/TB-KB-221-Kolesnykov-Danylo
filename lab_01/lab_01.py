@@ -6,7 +6,7 @@
 list = [
     {"name":"Bob", "surname": "Mirales", "phone":"0631234567", "email": "bob123@gmail.com" },
     {"name":"Emma", "surname": "Tompson","phone":"0631234567", "email": "emmatompson@gmail.com"},
-    {"name":"Jon",  "surname": "Tas","phone":"0631234567", "email": "jonsons@gmail.com"},
+    {"name":"Jon",  "surname": "Uyk","phone":"0631234567", "email": "jonsons@gmail.com"},
     {"name":"Zak",  "surname": "Mykolenko","phone":"0631234A567", "email": "mykolenko@gmail.com"}
 ]
 
