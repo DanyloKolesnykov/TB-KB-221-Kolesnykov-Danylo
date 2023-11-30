@@ -7,7 +7,7 @@ def sample_data():
     data = [
         {'name': 'Alice', 'phone': '123456'},
         {'name': 'John', 'phone': '789012'},
-        # Додайте ще елементів за необхідністю
+        
     ]
     params = ('name', 'phone')
     return data, params
@@ -30,7 +30,7 @@ def test_addNewElement(sample_data):
     new_item = {'name': 'Bob', 'phone': '345678'}
     addNewElement(data, params, new_item)
 
-    # Перевірка, чи 'Bob' став на позицію 1
+
     assert data[1] == new_item
 
 
@@ -60,4 +60,4 @@ def test_SaveAllData(sample_data, tmp_path):
     assert loaded_params == params
 
 
-# Додайте тести для функцій printAllList та main, перевіряючи вивід на екран і введення користувача.
+
