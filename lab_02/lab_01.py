@@ -139,4 +139,4 @@ def SaveAllData(students_list, params, path):
 if __name__ == '__main__':
     list, params = LoadBackFile(back_file)
     main(list, params)
-    SaveAllData(list, params, "lab_02/lab2_out.csv")
+    SaveAllData(list, params, "lab2_out.csv")

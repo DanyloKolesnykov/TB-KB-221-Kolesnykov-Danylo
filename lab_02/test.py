@@ -1,62 +1,63 @@
-import os
-import csv
 import pytest
-from lab_01 import LoadBackFile, SaveAllData, main
+from lab_01 import LoadBackFile, GetNewParams, addNewElement, deleteElement, updateElement, SaveAllData
 
+# Fixture для тестування
 @pytest.fixture
 def sample_data():
-    # You can modify this data for your specific test case
-    return [
-        {"name": "John", "phone": "123-456-7890"},
-        {"name": "Alice", "phone": "987-654-3210"}
+    data = [
+        {'name': 'Alice', 'phone': '123456'},
+        {'name': 'John', 'phone': '789012'},
+        # Додайте ще елементів за необхідністю
     ]
+    params = ('name', 'phone')
+    return data, params
 
-def test_load_back_file(tmpdir, sample_data):
-    # Create a temporary directory for testing
-    temp_file = os.path.join(tmpdir, "test_lab2.csv")
 
-    # Save sample data to the temporary file
-    with open(temp_file, "w", newline="") as csvfile:
-        fieldnames = sample_data[0].keys()
-        writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
-        writer.writeheader()
-        writer.writerows(sample_data)
+def test_LoadBackFile(sample_data):
+    data, params = sample_data
+    loaded_data, loaded_params = LoadBackFile("test_lab2.csv")
+    assert loaded_data == data
+    assert loaded_params == params
 
-    # Load the data using LoadBackFile
-    loaded_data, params = LoadBackFile(temp_file)
 
-    # Perform assertions
-    assert loaded_data == sample_data
-    assert params == tuple(sample_data[0].keys())
+def test_GetNewParams():
+    with pytest.raises(TypeError):
+        GetNewParams(('name', 'phone'))
 
-def test_main(tmpdir, capsys, monkeypatch):
-    # Create a temporary directory for testing
-    temp_file = os.path.join(tmpdir, "test_lab2.csv")
 
-    # Mock user input for testing main function
-    monkeypatch.setattr('builtins.input', lambda _: 'X')  # Simulate 'X' to exit
+def test_addNewElement(sample_data):
+    data, params = sample_data
+    new_item = {'name': 'Bob', 'phone': '345678'}
+    addNewElement(data, params, new_item)
 
-    # Call main function with sample data
-    main([], ("name", "phone"))
+    # Перевірка, чи 'Bob' став на позицію 1
+    assert data[1] == new_item
 
-    # Capture printed output
-    captured = capsys.readouterr()
 
-    # Perform assertions on the output
-    assert "Exit()" in captured.out
 
-def test_save_all_data(tmpdir, sample_data):
-    # Create a temporary directory for testing
-    temp_file = os.path.join(tmpdir, "test_lab2_out.csv")
+def test_deleteElement(sample_data):
+    data, _ = sample_data
+    name_to_delete = 'John'
+    deleteElement(data, name_to_delete)
+    assert all(item['name'] != name_to_delete for item in data)
 
-    # Call SaveAllData with sample data
-    SaveAllData(sample_data, ("name", "phone"), temp_file)
 
-    # Check if the file was created and has the correct content
-    assert os.path.isfile(temp_file)
+def test_updateElement(sample_data):
+    data, params = sample_data
+    updated_item = {'name': 'John', 'phone': '987654'}
+    updateElement(data, params, updated_item)
+    assert any(item == updated_item for item in data)
 
-    with open(temp_file, "r") as csvfile:
-        reader = csv.DictReader(csvfile)
-        saved_data = [row for row in reader]
 
-    assert saved_data == sample_data
+def test_SaveAllData(sample_data, tmp_path):
+    data, params = sample_data
+    file_path = tmp_path / "test_lab2_out.csv"
+    SaveAllData(data, params, file_path)
+    assert file_path.exists()
+
+    loaded_data, loaded_params = LoadBackFile(file_path)
+    assert loaded_data == data
+    assert loaded_params == params
+
+
+# Додайте тести для функцій printAllList та main, перевіряючи вивід на екран і введення користувача.
